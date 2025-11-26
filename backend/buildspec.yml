@@ -10,13 +10,12 @@ phases:
   pre_build:
     commands:
       - echo "Making deployment scripts executable..."
-      - chmod +x scripts/*.sh
+      - chmod +x backend/scripts/*.sh
 
   build:
     commands:
-      - echo "Running build (if needed)..."
-      # If your backend needs a build step, add it here.
-      # Example: npm run build
+      - echo "Running build step (if required)..."
+      # Add commands like npm run build if needed
 
   post_build:
     commands:
