@@ -3,23 +3,26 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Installing Node..."
-      - curl -sL https://rpm.nodesource.com/setup_18.x | bash -
+      - echo "Installing Node.js..."
+      - curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
       - yum install -y nodejs
+
   pre_build:
     commands:
-      - echo "Making scripts executable..."
+      - echo "Making deployment scripts executable..."
       - chmod +x scripts/*.sh
+
   build:
     commands:
-      - echo "Running build phase (if backend needs compilation)"
+      - echo "Running build (if needed)..."
+      # If your backend needs a build step, add it here.
+      # Example: npm run build
+
   post_build:
     commands:
-      - echo "Build completed. Preparing artifacts."
+      - echo "Build complete. Preparing artifact..."
 
 artifacts:
+  base-directory: backend
   files:
-    - appspec.yml
-    - scripts/**/*
-    - backend/**/*
-  discard-paths: no
+    - '**/*'
